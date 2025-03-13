@@ -1,0 +1,9 @@
+{
+  "dependencies": {
+    "i": "^0.3.7"
+  },
+  "scripts": {
+    "start": "npm run clients",
+    "client": "cd client && npm run start"
+  }
+}
