@@ -2,6 +2,7 @@
   display: flex;
   border: 1px solid black;
   width: var(--simple-calculator-width);
-  height: 50px;
-  justify-content: flex-end;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
 }
