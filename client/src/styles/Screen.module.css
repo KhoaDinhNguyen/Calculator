@@ -1,0 +1,7 @@
+#screen {
+  display: flex;
+  border: 1px solid black;
+  width: var(--simple-calculator-width);
+  height: 50px;
+  justify-content: flex-end;
+}

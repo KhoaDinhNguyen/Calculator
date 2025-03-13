@@ -1,0 +1,6 @@
+.lineOfButton {
+  display: flex;
+  list-style-type: none;
+  justify-content: space-evenly;
+  width: var(--simple-calculator-width);
+}

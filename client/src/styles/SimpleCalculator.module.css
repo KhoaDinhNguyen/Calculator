@@ -1,0 +1,9 @@
+#buttons {
+  list-style-type: none;
+}
+
+#pageView {
+  display: flex;
+  justify-content: center;
+  margin-top: 100px;
+}
