@@ -4,5 +4,14 @@
 }
 
 :root {
-  --simple-calculator-width: 400px
+  --simple-calculator-width: 400px;
+  --red500: #ff4d6d;
+  --grey500: #adb5bd;
+  --grey300: #dee2e6;
+  --blue700: #023e8a;
+  --grey600: #6c757d;
+  --blue500: #4361ee;
+  --yellow300: #fcefb4;
+  --whiteYellow200: #e9edc9;
+  --blue200: #cae9ff;
 }

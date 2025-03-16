@@ -6,4 +6,35 @@
   align-items: center;
   margin-top: 20px;
   cursor: pointer;
+  border: 1px solid var(--grey300);
+}
+
+.delete {
+  background-color: var(--red500);
+  color: white;
+}
+
+.special {
+  background-color: var(--grey500);
+  color: white;
+}
+
+.numeric {
+  background-color: var(--grey300);
+  color: var(--blue700);
+  font-weight: 900;
+}
+
+.basicOperator {
+  background-color: var(--grey600);
+  color: white;
+}
+
+.equal {
+  background-color: var(--blue500);
+  color: white;
+}
+
+.floatingPoint {
+  background-color: var(--yellow300);
 }

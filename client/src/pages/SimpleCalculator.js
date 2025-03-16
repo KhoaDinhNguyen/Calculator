@@ -140,6 +140,13 @@ function SimpleCalculator() {
     ["AC", "0", ".", "=", "+"],
   ];
 
+  const typeOfCalculator = [
+    ["special", "special", "special", "special", "special"],
+    ["special", "numeric", "numeric", "numeric", "basicOperator"],
+    ["special", "numeric", "numeric", "numeric", "basicOperator"],
+    ["delete", "numeric", "numeric", "numeric", "basicOperator"],
+    ["delete", "numeric", "floatingPoint", "equal", "basicOperator"],
+  ];
   const onClickCalculator = [
     [
       storeMemoryValue,
@@ -184,6 +191,7 @@ function SimpleCalculator() {
         <LineOfButton
           buttonsText={row}
           onClickButtons={onClickCalculator[idx]}
+          typeOfButtons={typeOfCalculator[idx]}
         />
       </li>
     );
@@ -191,7 +199,7 @@ function SimpleCalculator() {
 
   return (
     <div id={styles.pageView}>
-      <div>
+      <div id={styles.calculator}>
         <Screen value={currentValue} op={currentOperation} />
         <ul id={styles.buttons}>{configureComponent}</ul>
       </div>
