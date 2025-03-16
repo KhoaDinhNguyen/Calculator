@@ -3,7 +3,7 @@
     "i": "^0.3.7"
   },
   "scripts": {
-    "start": "npm run clients",
+    "start": "npm run client",
     "client": "cd client && npm run start"
   }
 }
