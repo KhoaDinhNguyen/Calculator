@@ -1,12 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Quantico:ital,wght@0,400;0,700;1,400;1,700&display=swap');
 
 #screen {
-  display: flex;
   border: 5px solid var(--grey500);
   border-radius: 10px;
   width: var(--simple-calculator-width);
-  justify-content: space-between;
-  align-items: center;
   background-color: white;
   padding: 15px 20px;
 }
@@ -16,4 +13,21 @@
   font-weight: 400;
   font-style: italic;
   font-size: 40px;
+}
+
+#currentScreen {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#previousScreen {
+  display: flex;
+  justify-content: flex-end;
+  border-top: 1px solid var(--grey500);
+}
+
+#previousScreen .displayScreen {
+  font-size: 20px;
+  color: var(--grey500)
 }

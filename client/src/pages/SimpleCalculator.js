@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 import LineOfButton from "../components/LineOfButton";
 import Screen from "../components/Screen";
@@ -20,6 +20,10 @@ function SimpleCalculator() {
   const [currentButton, setCurrentButton] = useState(null);
   const [previousOperation, setPreviousOperation] = useState(null);
   const [memoryValue, setMemoryValue] = useState("0");
+
+  useEffect(() => {
+    document.title = "Calculator | Simple Calculator";
+  }, []);
 
   const onClickNumericButton = (value) => {
     if (!nextScreenValue) {
@@ -48,7 +52,7 @@ function SimpleCalculator() {
         doOperation(previousValue, currentValue, previousOperation)
       );
     } else if (previousValue === null) {
-      setPreviousValue((val) => currentValue);
+      setPreviousValue((val) => formatStringNumber(currentValue));
     }
     setPreviousOperation(op);
     setCurrentButton(op);
@@ -72,7 +76,7 @@ function SimpleCalculator() {
         doOperation(previousValue, currentValue, currentOperation)
       );
     } else if (previousValue === null) {
-      setPreviousValue((val) => currentValue);
+      setPreviousValue((val) => formatStringNumber(currentValue));
     }
     setPreviousValue(null);
     setPreviousOperation(null);
@@ -197,7 +201,11 @@ function SimpleCalculator() {
   return (
     <div id={styles.pageView}>
       <div id={styles.calculator}>
-        <Screen value={currentValue} op={currentOperation} />
+        <Screen
+          currentValue={currentValue}
+          op={currentOperation}
+          previousValue={previousValue}
+        />
         <ul id={styles.buttons}>{configureComponent}</ul>
       </div>
     </div>
