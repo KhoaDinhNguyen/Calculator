@@ -111,11 +111,8 @@ function SimpleCalculator() {
   const getSquareRoot = () => {
     setCurrentValue((val) => {
       const result = doSquareRoot(val);
-      if (result === "NaN") {
-        return clearAllScreen();
-      } else {
-        return formatStringNumber(result);
-      }
+      setNextScreenValue(true);
+      return formatStringNumber(result);
     });
   };
 

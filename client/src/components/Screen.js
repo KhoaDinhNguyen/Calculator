@@ -4,8 +4,8 @@ import "../styles/Root.css";
 function Screen({ value, op }) {
   return (
     <div id={styles.screen}>
-      <p>{op}</p>
-      <p>{value}</p>
+      <p className={styles.displayScreen}>{op}</p>
+      <p className={styles.displayScreen}>{value}</p>
     </div>
   );
 }

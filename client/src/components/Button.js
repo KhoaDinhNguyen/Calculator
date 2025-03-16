@@ -7,7 +7,7 @@ function Button({ buttonText, onClickHandler, type }) {
       className={`${styles.button} ${styles[type]}`}
       onClick={onClickHandler}
     >
-      {buttonText}
+      <p>{buttonText}</p>
     </button>
   );
 }
