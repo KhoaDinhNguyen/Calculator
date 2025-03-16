@@ -205,6 +205,7 @@ function SimpleCalculator() {
           currentValue={currentValue}
           op={currentOperation}
           previousValue={previousValue}
+          memoryValue={memoryValue}
         />
         <ul id={styles.buttons}>{configureComponent}</ul>
       </div>
