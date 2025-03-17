@@ -1,28 +1,5 @@
 import configureOfSimpleCalculator from "./simpleCalculatorConfigure";
 
-const databaseOfInstructions = [
-  "MS",
-  "MR",
-  "M+",
-  "MC",
-  "+",
-  "-",
-  "\u00d7",
-  "\u00f7",
-  ".",
-  "=",
-  "0",
-  "1",
-  "2",
-  "3",
-  "4",
-  "5",
-  "6",
-  "7",
-  "8",
-  "9",
-];
-
 const specialOperator = ["sqrt", "%", "+-"];
 const deleteOperator = ["CE", "AC"];
 const memoryOperator = ["MS", "MR", "M+", "MC"];
@@ -31,23 +8,11 @@ const equalOperator = ["="];
 const basicOperator = ["+", "-", "\u00d7", "\u00f7"];
 const numeric = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
 
-const createInstructionObject = (buttonText, instructionText, type) => {
-  return {
-    buttonText,
-    instructionText,
-    type,
-  };
-};
-
 const createInstructionArray = (arrayOfOperator) => {
   const arrayOfInstruction = arrayOfOperator.map((instructionName) => {
     for (const button of configureOfSimpleCalculator) {
       if (button.buttonText === instructionName) {
-        return createInstructionObject(
-          button.buttonText,
-          button.instructionText,
-          button.type
-        );
+        return button;
       }
     }
   });

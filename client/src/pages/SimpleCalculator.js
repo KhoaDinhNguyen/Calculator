@@ -1,17 +1,19 @@
 import { useState, useEffect } from "react";
 
+import SimpleInstruction from "../components/SimpleInstruction";
 import LineOfButton from "../components/LineOfButton";
 import Screen from "../components/Screen";
+import buttonsConfigureMatrix from "../database/simpleButtonConfigure";
 
 import formatStringNumber from "../utils/formatStringNumber";
 import doOperation from "../utils/doOperation";
 import toggleNumber from "../utils/toggleNumber";
 import removeRightmostDigit from "../utils/removeRightmostDigit";
 import doSquareRoot from "../utils/squareRoot";
+import { applyOnClickHandler } from "../database/simpleButtonConfigure";
 
 import styles from "../styles/SimpleCalculator.module.css";
 import "../styles/Root.css";
-import SimpleInstruction from "../components/SimpleInstruction";
 
 function SimpleCalculator() {
   const [currentValue, setCurrentValue] = useState("0");
@@ -26,6 +28,9 @@ function SimpleCalculator() {
     document.title = "Calculator | Simple Calculator";
   }, []);
 
+  /*
+    Numeric
+  */
   const onClickNumericButton = (value) => {
     if (!nextScreenValue) {
       setCurrentValue((v) => {
@@ -38,6 +43,16 @@ function SimpleCalculator() {
     setCurrentButton(value);
   };
 
+  for (let i = 0; i < 10; ++i) {
+    applyOnClickHandler(
+      i.toString(),
+      onClickNumericButton.bind(this, i.toString())
+    );
+  }
+
+  /*
+    Basic operators
+  */
   const onClickOperation = (op) => {
     if (
       currentButton !== "+" &&
@@ -61,10 +76,57 @@ function SimpleCalculator() {
     setNextScreenValue(true);
   };
 
+  applyOnClickHandler("\u00f7", onClickOperation.bind(this, "\u00f7"));
+  applyOnClickHandler("\u00d7", onClickOperation.bind(this, "\u00d7"));
+  applyOnClickHandler("+", onClickOperation.bind(this, "+"));
+  applyOnClickHandler("-", onClickOperation.bind(this, "-"));
+
+  /*
+    +-: Change sign
+  */
   const onClickToggle = () => {
     setCurrentValue((val) => toggleNumber(val));
   };
 
+  applyOnClickHandler("+-", onClickToggle);
+
+  /*
+    .: Add floating-point
+  */
+  const addFloatingPoint = () => {
+    setCurrentValue((val) => formatStringNumber(val + "."));
+  };
+
+  applyOnClickHandler(".", addFloatingPoint);
+
+  /*
+    %: Get percent
+  */
+
+  const getPercent = () => {
+    setCurrentValue((val) =>
+      formatStringNumber(doOperation(val, "100", "\u00f7"))
+    );
+  };
+
+  applyOnClickHandler("%", getPercent);
+
+  /*
+    Get square root
+  */
+  const getSquareRoot = () => {
+    setCurrentValue((val) => {
+      const result = doSquareRoot(val);
+      setNextScreenValue(true);
+      return formatStringNumber(result);
+    });
+  };
+
+  applyOnClickHandler("sqrt", getSquareRoot);
+
+  /*
+    =: Equal operators
+  */
   const onClickEqual = () => {
     if (
       currentButton !== "+" &&
@@ -86,47 +148,59 @@ function SimpleCalculator() {
     setCurrentButton("=");
   };
 
-  const clearRightmostDigit = () => {
-    setCurrentValue((val) => formatStringNumber(removeRightmostDigit(val)));
-  };
+  applyOnClickHandler("=", onClickEqual);
 
+  /*
+    MS: Memory store
+  */
   const storeMemoryValue = () => {
     setMemoryValue((val) => formatStringNumber(currentValue));
     setNextScreenValue(true);
   };
 
+  applyOnClickHandler("MS", storeMemoryValue);
+
+  /*
+    MR: Recall memory
+  */
   const recallMemoryValue = () => {
     setCurrentValue((val) => formatStringNumber(memoryValue));
   };
 
+  applyOnClickHandler("MR", recallMemoryValue);
+
+  /*
+    M+: Add memory
+  */
   const addMemoryValue = () => {
     const result = doOperation(currentValue, memoryValue, "+");
     setMemoryValue((val) => formatStringNumber(result));
     setCurrentValue((val) => formatStringNumber(result));
   };
 
-  const addFloatingPoint = () => {
-    setCurrentValue((val) => formatStringNumber(val + "."));
-  };
+  applyOnClickHandler("M+", addMemoryValue);
 
-  const getPercent = () => {
-    setCurrentValue((val) =>
-      formatStringNumber(doOperation(val, "100", "\u00f7"))
-    );
-  };
-
-  const getSquareRoot = () => {
-    setCurrentValue((val) => {
-      const result = doSquareRoot(val);
-      setNextScreenValue(true);
-      return formatStringNumber(result);
-    });
-  };
-
+  /*
+    MC: Clear memory
+  */
   const clearMemory = () => {
     setMemoryValue((val) => "0");
   };
 
+  applyOnClickHandler("MC", clearMemory);
+
+  /*
+    CE: Clear rightmost digit
+  */
+  const clearRightmostDigit = () => {
+    setCurrentValue((val) => formatStringNumber(removeRightmostDigit(val)));
+  };
+
+  applyOnClickHandler("CE", clearRightmostDigit);
+
+  /*
+    AC: Clear all the screen
+  */
   const clearAllScreen = () => {
     setCurrentValue("0");
     setPreviousValue(null);
@@ -136,68 +210,12 @@ function SimpleCalculator() {
     setPreviousOperation(null);
   };
 
-  const configureOfSimpleCalculator = [
-    ["MS", "MR", "M+", "MC", "sqrt"],
-    ["%", "7", "8", "9", "\u00f7"],
-    ["+-", "4", "5", "6", "\u00d7"],
-    ["CE", "1", "2", "3", "-"],
-    ["AC", "0", ".", "=", "+"],
-  ];
+  applyOnClickHandler("AC", clearAllScreen);
 
-  const typeOfCalculator = [
-    ["special", "special", "special", "special", "special"],
-    ["special", "numeric", "numeric", "numeric", "basicOperator"],
-    ["special", "numeric", "numeric", "numeric", "basicOperator"],
-    ["delete", "numeric", "numeric", "numeric", "basicOperator"],
-    ["delete", "numeric", "floatingPoint", "equal", "basicOperator"],
-  ];
-
-  const onClickCalculator = [
-    [
-      storeMemoryValue,
-      recallMemoryValue,
-      addMemoryValue,
-      clearMemory,
-      getSquareRoot,
-    ],
-    [
-      getPercent,
-      onClickNumericButton.bind(this, "7"),
-      onClickNumericButton.bind(this, "8"),
-      onClickNumericButton.bind(this, "9"),
-      onClickOperation.bind(this, "\u00f7"),
-    ],
-    [
-      onClickToggle,
-      onClickNumericButton.bind(this, "4"),
-      onClickNumericButton.bind(this, "5"),
-      onClickNumericButton.bind(this, "6"),
-      onClickOperation.bind(this, "\u00d7"),
-    ],
-    [
-      clearRightmostDigit,
-      onClickNumericButton.bind(this, "1"),
-      onClickNumericButton.bind(this, "2"),
-      onClickNumericButton.bind(this, "3"),
-      onClickOperation.bind(this, "-"),
-    ],
-    [
-      clearAllScreen,
-      onClickNumericButton.bind(this, "0"),
-      addFloatingPoint,
-      onClickEqual,
-      onClickOperation.bind(this, "+"),
-    ],
-  ];
-
-  const configureComponent = configureOfSimpleCalculator.map((row, idx) => {
+  const configureComponent = buttonsConfigureMatrix.map((row, idx) => {
     return (
-      <li key={`row${idx + 1}`}>
-        <LineOfButton
-          buttonsText={row}
-          onClickButtons={onClickCalculator[idx]}
-          typeOfButtons={typeOfCalculator[idx]}
-        />
+      <li key={`buttonsRow_${idx + 1}`}>
+        <LineOfButton buttonsRow={row} />
       </li>
     );
   });

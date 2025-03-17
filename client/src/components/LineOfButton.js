@@ -2,13 +2,13 @@ import Button from "./Button";
 
 import styles from "../styles/LineOfButton.module.css";
 
-function LineOfButton({ buttonsText, onClickButtons, typeOfButtons }) {
-  const buttonComponents = buttonsText.map((buttonText, idx) => (
-    <li key={buttonText}>
+function LineOfButton({ buttonsRow }) {
+  const buttonComponents = buttonsRow.map((buttonObject) => (
+    <li key={buttonObject.buttonText}>
       <Button
-        onClickHandler={onClickButtons[idx]}
-        buttonText={buttonText}
-        type={typeOfButtons[idx]}
+        onClickHandler={buttonObject.onClickHandler}
+        buttonText={buttonObject.buttonText}
+        type={buttonObject.type}
       />
     </li>
   ));

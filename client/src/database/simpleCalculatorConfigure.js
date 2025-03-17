@@ -6,12 +6,9 @@ const createButtonConfigureOfSimpleCalculator = (
 ) => {
   return {
     buttonText,
-    onClickHandler: onClickHandler,
+    onClickHandler,
     instructionText,
     type,
-    addOnClickHandler: (onClickHandler) => {
-      this.onClickHandler = onClickHandler;
-    },
   };
 };
 

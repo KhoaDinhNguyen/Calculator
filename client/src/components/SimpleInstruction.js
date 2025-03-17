@@ -19,11 +19,11 @@ function SimpleInstruction() {
         arrayOfInstruction={memoryInstructions}
       />
       <TypeOfInstruction
-        name={"Delete"}
+        name={"Delete Operators"}
         arrayOfInstruction={deleteInstructions}
       />
       <TypeOfInstruction
-        name={"Special"}
+        name={"Special Operators"}
         arrayOfInstruction={speciaInstructions}
       />
       <TypeOfInstruction
@@ -32,7 +32,7 @@ function SimpleInstruction() {
       />
       <TypeOfInstruction name={"Equal"} arrayOfInstruction={equalInstruction} />
       <TypeOfInstruction
-        name={"Basic Operator"}
+        name={"Basic Operators"}
         arrayOfInstruction={basicInstructions}
       />
       <NumericInstruction />
@@ -74,7 +74,7 @@ function NumericInstruction() {
   });
   return (
     <div id={styles.numericInstruction}>
-      <p className={styles.instructionTitle}>Numeric</p>
+      <p className={styles.instructionTitle}>Numeric value</p>
       <ul className={styles.instructionList}>{instructionContainers}</ul>
     </div>
   );
