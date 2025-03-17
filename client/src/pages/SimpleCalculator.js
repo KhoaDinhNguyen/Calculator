@@ -20,7 +20,7 @@ function SimpleCalculator() {
   const [previousValue, setPreviousValue] = useState(null);
   const [nextScreenValue, setNextScreenValue] = useState(false);
   const [currentOperation, setCurrentOperation] = useState(null);
-  const [currentButton, setCurrentButton] = useState(null);
+  const [previousButton, setPreviousButton] = useState(null);
   const [previousOperation, setPreviousOperation] = useState(null);
   const [memoryValue, setMemoryValue] = useState("0");
 
@@ -40,7 +40,7 @@ function SimpleCalculator() {
       setCurrentValue(formatStringNumber(value));
       setNextScreenValue(false);
     }
-    setCurrentButton(value);
+    setPreviousButton(value);
   };
 
   for (let i = 0; i < 10; ++i) {
@@ -55,10 +55,10 @@ function SimpleCalculator() {
   */
   const onClickOperation = (op) => {
     if (
-      currentButton !== "+" &&
-      currentButton !== "-" &&
-      currentButton !== "\u00d7" &&
-      currentButton !== "\u00f7" &&
+      previousButton !== "+" &&
+      previousButton !== "-" &&
+      previousButton !== "\u00d7" &&
+      previousButton !== "\u00f7" &&
       previousValue !== null
     ) {
       setPreviousValue(
@@ -71,7 +71,7 @@ function SimpleCalculator() {
       setPreviousValue((val) => formatStringNumber(currentValue));
     }
     setPreviousOperation(op);
-    setCurrentButton(op);
+    setPreviousButton(op);
     setCurrentOperation(op);
     setNextScreenValue(true);
   };
@@ -129,10 +129,10 @@ function SimpleCalculator() {
   */
   const onClickEqual = () => {
     if (
-      currentButton !== "+" &&
-      currentButton !== "-" &&
-      currentButton !== "\u00d7" &&
-      currentButton !== "\u00f7" &&
+      previousButton !== "+" &&
+      previousButton !== "-" &&
+      previousButton !== "\u00d7" &&
+      previousButton !== "\u00f7" &&
       previousValue !== null
     ) {
       setCurrentValue(
@@ -145,7 +145,7 @@ function SimpleCalculator() {
     setPreviousOperation(null);
     setCurrentOperation(null);
     setNextScreenValue(true);
-    setCurrentButton("=");
+    setPreviousButton("=");
   };
 
   applyOnClickHandler("=", onClickEqual);
@@ -205,7 +205,7 @@ function SimpleCalculator() {
     setCurrentValue("0");
     setPreviousValue(null);
     setNextScreenValue(false);
-    setCurrentButton(null);
+    setPreviousButton(null);
     setCurrentOperation(null);
     setPreviousOperation(null);
   };
