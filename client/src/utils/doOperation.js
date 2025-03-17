@@ -15,9 +15,9 @@ function doOperation(operand1, operand2, operator) {
     ans = num1 + num2;
   } else if (operator === "-") {
     ans = num1 - num2;
-  } else if (operator === "*") {
+  } else if (operator === "\u00d7") {
     ans = num1 * num2;
-  } else if (operator === "/") {
+  } else if (operator === "\u00f7") {
     ans = num1 / num2;
   }
 

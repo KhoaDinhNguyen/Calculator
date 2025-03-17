@@ -71,13 +71,13 @@ const configureOfSimpleCalculator = [
     "delete"
   ),
   createButtonConfigureOfSimpleCalculator(
-    "/",
+    "\u00f7",
     null,
     "Division",
     "basicOperator"
   ),
   createButtonConfigureOfSimpleCalculator(
-    "*",
+    "\u00d7",
     null,
     "Multiplication",
     "basicOperator"

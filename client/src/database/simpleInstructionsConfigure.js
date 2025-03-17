@@ -7,8 +7,8 @@ const databaseOfInstructions = [
   "MC",
   "+",
   "-",
-  "*",
-  "/",
+  "\u00d7",
+  "\u00f7",
   ".",
   "=",
   "0",
@@ -28,7 +28,7 @@ const deleteOperator = ["CE", "AC"];
 const memoryOperator = ["MS", "MR", "M+", "MC"];
 const floatingPointOperator = ["."];
 const equalOperator = ["="];
-const basicOperator = ["+", "-", "*", "/"];
+const basicOperator = ["+", "-", "\u00d7", "\u00f7"];
 const numeric = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
 
 const createInstructionObject = (buttonText, instructionText, type) => {

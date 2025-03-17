@@ -42,8 +42,8 @@ function SimpleCalculator() {
     if (
       currentButton !== "+" &&
       currentButton !== "-" &&
-      currentButton !== "*" &&
-      currentButton !== "/" &&
+      currentButton !== "\u00d7" &&
+      currentButton !== "\u00f7" &&
       previousValue !== null
     ) {
       setPreviousValue(
@@ -69,8 +69,8 @@ function SimpleCalculator() {
     if (
       currentButton !== "+" &&
       currentButton !== "-" &&
-      currentButton !== "*" &&
-      currentButton !== "/" &&
+      currentButton !== "\u00d7" &&
+      currentButton !== "\u00f7" &&
       previousValue !== null
     ) {
       setCurrentValue(
@@ -110,7 +110,9 @@ function SimpleCalculator() {
   };
 
   const getPercent = () => {
-    setCurrentValue((val) => formatStringNumber(doOperation(val, "100", "/")));
+    setCurrentValue((val) =>
+      formatStringNumber(doOperation(val, "100", "\u00f7"))
+    );
   };
 
   const getSquareRoot = () => {
@@ -136,8 +138,8 @@ function SimpleCalculator() {
 
   const configureOfSimpleCalculator = [
     ["MS", "MR", "M+", "MC", "sqrt"],
-    ["%", "7", "8", "9", "/"],
-    ["+-", "4", "5", "6", "*"],
+    ["%", "7", "8", "9", "\u00f7"],
+    ["+-", "4", "5", "6", "\u00d7"],
     ["CE", "1", "2", "3", "-"],
     ["AC", "0", ".", "=", "+"],
   ];
@@ -163,14 +165,14 @@ function SimpleCalculator() {
       onClickNumericButton.bind(this, "7"),
       onClickNumericButton.bind(this, "8"),
       onClickNumericButton.bind(this, "9"),
-      onClickOperation.bind(this, "/"),
+      onClickOperation.bind(this, "\u00f7"),
     ],
     [
       onClickToggle,
       onClickNumericButton.bind(this, "4"),
       onClickNumericButton.bind(this, "5"),
       onClickNumericButton.bind(this, "6"),
-      onClickOperation.bind(this, "*"),
+      onClickOperation.bind(this, "\u00d7"),
     ],
     [
       clearRightmostDigit,
