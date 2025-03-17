@@ -1,5 +1,5 @@
 function removeRightmostDigit(input) {
-  if ((input = "NaN")) {
+  if (input === "NaN") {
     return "0";
   }
   let N = input.length;

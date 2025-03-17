@@ -1,5 +1,4 @@
 import styles from "../styles/Screen.module.css";
-import "../styles/Root.css";
 
 function Screen({ currentValue, op, previousValue, memoryValue }) {
   return (

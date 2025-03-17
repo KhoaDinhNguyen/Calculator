@@ -1,5 +1,4 @@
 import styles from "../styles/Button.module.css";
-import "../styles/Root.css";
 
 function Button({ buttonText, onClickHandler, type }) {
   return (

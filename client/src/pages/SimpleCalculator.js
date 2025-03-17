@@ -11,6 +11,7 @@ import doSquareRoot from "../utils/squareRoot";
 
 import styles from "../styles/SimpleCalculator.module.css";
 import "../styles/Root.css";
+import SimpleInstruction from "../components/SimpleInstruction";
 
 function SimpleCalculator() {
   const [currentValue, setCurrentValue] = useState("0");
@@ -148,6 +149,7 @@ function SimpleCalculator() {
     ["delete", "numeric", "numeric", "numeric", "basicOperator"],
     ["delete", "numeric", "floatingPoint", "equal", "basicOperator"],
   ];
+
   const onClickCalculator = [
     [
       storeMemoryValue,
@@ -179,7 +181,7 @@ function SimpleCalculator() {
     ],
     [
       clearAllScreen,
-      onClickNumericButton.bind(this, 0),
+      onClickNumericButton.bind(this, "0"),
       addFloatingPoint,
       onClickEqual,
       onClickOperation.bind(this, "+"),
@@ -200,6 +202,9 @@ function SimpleCalculator() {
 
   return (
     <div id={styles.pageView}>
+      <div>
+        <SimpleInstruction />
+      </div>
       <div id={styles.calculator}>
         <Screen
           currentValue={currentValue}

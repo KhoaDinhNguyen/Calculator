@@ -1,0 +1,18 @@
+#simpleInstructionView {
+  margin-top: 50px;
+}
+.instructionList {
+  list-style-type: none;
+}
+
+.instructionTitle {
+  font-size: 20px;
+  margin-bottom: 10px;
+  border-bottom: 1px solid var(--grey500);
+  font-weight: 700;
+}
+
+#numericInstruction ul {
+  display: flex;
+  justify-content: space-between;
+}

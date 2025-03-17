@@ -1,57 +1,56 @@
 .button {
   display: flex;
-  width: 60px;
-  height: 60px;
+  width: 40px;
+  height: 40px;
   justify-content: center;
   align-items: center;
-  cursor: pointer;
-  font-size: 20px;
+  font-size: 14px;
   font-weight: 700;
   border-radius: 10px;
   border: transparent;
   border-bottom: 3px solid black;
-}
 
-.button:hover {
-  transform: translate(0, 5px);
-  box-shadow: 0px 0px;
 }
 
 .delete {
   background-color: var(--red500);
   color: white;
-  box-shadow: 0px 5px var(--red500);
 }
 
 
 .special {
   background-color: var(--grey500);
   color: white;
-  box-shadow: 0px 5px var(--grey500);
 }
 
 .numeric {
   background-color: var(--grey300);
   color: var(--blue700);
   font-weight: 700;
-  font-size: 28px;
-  box-shadow: 0px 5px var(--grey300);
+  font-size: 16px;
 }
 
 .basicOperator {
   background-color: var(--grey600);
   color: white;
-  box-shadow: 0px 5px var(--grey600);
 }
 
 .equal {
   background-color: var(--blue500);
   color: white;
-  box-shadow: 0px 5px var(--blue500);
 }
 
 .floatingPoint {
   background-color: var(--yellow300);
   font-size: 32px;
-  box-shadow: 0px 5px var(--yellow300);
+}
+
+.instructionContainer {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.instructionText {
+  margin-left: 10px;
 }
